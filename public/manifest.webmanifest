@@ -1,10 +1,12 @@
 {
-  "short_name": "FanWitch",
   "name": "FanWitch",
-  "start_url": ".",
+  "short_name": "FanWitch",
+  "start_url": "login.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
+  "theme_color": "#FFC312",
+  "background_color": "white",
+  "orientation": "portrait",
+  "description": "App para gerencimento de canais do Twitch",
   "icons": [
     {
       "src": "./assets/img/fanwitch-48x48.png",
