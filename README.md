@@ -10,3 +10,9 @@ Tela onde o usuário consegue cadastrar o seu usuario. Existes validação de se
 
 3 - Página dos seus “ídolos”.
 Onde tem tudo sobre os streamers que você acompanha, as notificações, redes sociais e as informações deles.
+
+4 - Cadastro de streamer
+O cadastro de streamer acontece em uma página especifica. Ela é capaz de manipular e salvar os dados dos canais por usuário, mantendo a exclusividade das suas informações sem misturar com as de outros usuário
+
+5 - Componente de navbar
+Para melhor utilização entre as telas, a navbar foi componentizada para reutilização de código.
