@@ -39,6 +39,7 @@ body {
     transition-duration: .3s;
     transition-property: left, visibility;
   }
+
   .offcanvas-collapse.open {
     left: 0;
     visibility: visible;
@@ -90,7 +91,7 @@ body {
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
 
-#navbarsExampleDefault a {
+#navbarSupportedContent a {
     color: white!important;
 }
 .navbar-menu {
@@ -111,6 +112,7 @@ body {
 .navbar-purple .navbar-toggler-icon {
     background-image: url(../../public/assets/img/menu-icone.png)
 }
-#navbarsExampleDefault {
+
+#navbarSupportedContent {
     background-color: #6f42c1;
 }

@@ -20,17 +20,19 @@ class Cadastro extends React.Component {
         this.submit = this.submit.bind(this);
     }
 
+    // Manipulações de campos do formulário
     handleChange (event, campo) {
         this.setState({ [campo]: event.target.value});
     }
 
+    // Define os dados do canal cadastrado pelo usuário em local storage, bem como sua tratativa dos dados pré-existentes
     submit (event) {
         event.preventDefault();
         if (this.state.confirmarSenha !== this.state.senha) {
             alert("As senhas não estão iguais")
             return false
         } else {
-            // localStorage.removeItem("usuarios")
+            // localStorage.removeItem("usuarios") // usado para limpar a estrutura sempre que for modificada a forma de inserir ou interpretar algum dado
             let usuarios = localStorage.getItem("usuarios")
 
             if (usuarios === null) {
@@ -60,6 +62,7 @@ class Cadastro extends React.Component {
     }
 
     render () {
+        // Valida login e redireciona para a página de autenticação caso não exista
         if (this.state.redirecionar) {
             return <Navigate to="/login" />
         }

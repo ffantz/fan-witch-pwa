@@ -8,6 +8,8 @@ import { Navigate, Link } from "react-router-dom";
 class CadastroCanal extends React.Component {
     constructor (props) {
         super(props);
+
+        // Define o state padrão
         this.state = {
             nomeCanal: '',
             live: '',
@@ -21,14 +23,17 @@ class CadastroCanal extends React.Component {
         this.submit = this.submit.bind(this);
     }
 
+    // Manipulações de campos do formulário
     handleChange (event, campo) {
         this.setState({ [campo]: event.target.value});
     }
 
+    // Manipulações de checkbox
     toggleChange (event, campo) {
         this.setState({ [campo]: event.target.checked});
     }
 
+    // Define os dados do canal cadastrado pelo usuário em local storage, bem como sua tratativa dos dados pré-existentes
     submit (event) {
         event.preventDefault();
 
@@ -51,11 +56,13 @@ class CadastroCanal extends React.Component {
     }
 
     render () {
+        // Valida login e redireciona para a página de autenticação caso não exista
         let logado = JSON.parse(localStorage.getItem("logado"));
         if (!logado) {
             return <Navigate to="/login" />
         }
 
+        // Controle de navegação pela aplicação
         if (this.state.cadastrado) {
             return <Navigate to="/" />
         }

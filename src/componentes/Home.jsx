@@ -8,26 +8,30 @@ import { Navigate, Link } from "react-router-dom";
 class Home extends React.Component {
     constructor (props) {
         super(props);
+
+        // Define o state padrão
         this.state = {
             logado: true,
             canais: JSON.parse(localStorage.getItem("canais")) !== null ? JSON.parse(localStorage.getItem("canais")) : []
         };
 
+        // @TODO
         // this.editarCanal = this.editarCanal.bind(this);
         this.removerCanal = this.removerCanal.bind(this);
     }
 
+    //  @TODO
     // editarCanal (event, index) {
     //     localStorage.setItem("indexEdicao", index)
     //     return <Navigate to="/cadastro-canal" />
     // }
 
+    // Remove o canal do indice específico na listagem
     removerCanal (event, index) {
         this.state.canais.splice(index, 1)
 
         let usuarios = JSON.parse(localStorage.getItem("usuarios"));
         const usuario = localStorage.getItem("usuario");
-
 
         let userStorage = JSON.parse(usuarios[usuario])
         userStorage.canais = JSON.stringify(this.state.canais)
@@ -35,10 +39,12 @@ class Home extends React.Component {
         localStorage.setItem("usuarios", JSON.stringify(usuarios))
         localStorage.setItem("canais", JSON.stringify(this.state.canais))
 
+        // Re-render
         this.forceUpdate();
     }
 
     render () {
+        // Valida login e redireciona para a página de autenticação caso não exista
         let logado = JSON.parse(localStorage.getItem("logado"));
         if (!logado || !this.state.logado) {
             return <Navigate to="/login" />
@@ -57,6 +63,7 @@ class Home extends React.Component {
 
                     <div className="my-3 p-3 bg-white rounded shadow-sm">
                         <div className="meus-canais">
+                            {/* Div mostrada caso não existam canais cadastrados pelo usuário */}
                             { this.state.canais.length === 0 &&
                                 <div className="media text-muted pt-3  border-bottom border-gray pb-2">
                                     <div className="alert alert-warning" role="alert" style={{width: "100%"}}>
@@ -65,6 +72,7 @@ class Home extends React.Component {
                                 </div>
                             }
 
+                            {/* Loop renderizando canais cadastrados pelo usuário */}
                             { this.state.canais.map((item, index) => {
                                 item = JSON.parse(item)
                                 return <div className="media text-muted pt-3 border-bottom border-gray pb-2" key={index}>
@@ -82,7 +90,6 @@ class Home extends React.Component {
                                             </ul>
                                         </div>
                                         <div className="action-canal col-md-2 col-sm-2">
-                                            {/* <button className="btn btn-sm btn-link btn-editar-canal" onClick={(e) => this.editarCanal(e, index)}>Editar</button><br /> */}
                                             <button className="btn btn-sm btn-link btn-remover-canal" onClick={(e) => this.removerCanal(e, index)}>Remover</button>
                                         </div>
                                     </div>

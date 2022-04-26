@@ -9,6 +9,8 @@ class NavBar extends React.Component {
         this.state = {};
 
         this.sair = this.sair.bind(this);
+        this.handleNavCollapse = this.handleNavCollapse.bind(this);
+        this.isNavCollapsed = true;
     }
 
     sair () {
@@ -16,26 +18,30 @@ class NavBar extends React.Component {
         return <Navigate to="/login" />
     }
 
+    // Trata a barra oculta - mobile
+    handleNavCollapse () {
+        this.isNavCollapsed = !this.isNavCollapsed
+        this.forceUpdate();
+    }
+
     render () {
         return (
-            <nav className="navbar navbar-expand-lg fixed-top navbar-purple bg-purple ">
+            <nav className="navbar navbar-expand-lg fixed-top navbar-purple bg-purple">
                 <div style={{marginLeft: '10px' }}>
                     <img style={{marginRight: '10px' }} className="mr-3" src="./assets/img/fanwitch-icone.png" alt="" width="35" height="35" />
                     <span className="navbar-brand navbar-menu mr-auto mr-lg-0">FanWitch</span>
                 </div>
 
-                <button className="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-                    <span className="navbar-toggler-icon">
-                        <i className="fa-solid fa-bars"></i>
-                    </span>
+                <button className="navbar-toggler p-0 border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded={!this.isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={this.handleNavCollapse}>
+                    <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <div className={`${this.isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
+                        <li className="nav-item" style={{marginLeft: '10px' }}>
                             <a className="nav-link" href="/">Home <span className="sr-only"></span></a>
                         </li>
-                        <li className="nav-item">
+                        <li className="nav-item" style={{marginLeft: '10px' }}>
                             <a className="nav-link button-sair" href="/login" onClick={this.sair}>Sair</a>
                         </li>
                     </ul>

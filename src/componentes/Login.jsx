@@ -20,10 +20,12 @@ class Login extends React.Component {
         this.submit = this.submit.bind(this);
     }
 
+    // Manipulações de campos do formulário
     handleChange (event, campo) {
         this.setState({ [campo]: event.target.value});
     }
 
+    // Define os dados do canal cadastrado pelo usuário em local storage, bem como sua tratativa dos dados pré-existentes
     submit (event) {
         event.preventDefault();
         const usuarios = JSON.parse(localStorage.getItem("usuarios"));
@@ -51,6 +53,7 @@ class Login extends React.Component {
     }
 
     render () {
+        // Valida login e redireciona para a página de autenticação caso não exista
         if (this.state.logado) {
             return <Navigate to="/" />
         }
